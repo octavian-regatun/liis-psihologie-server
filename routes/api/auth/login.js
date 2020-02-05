@@ -4,7 +4,7 @@ const User = require("../../../models/User");
 const UserSession = require("../../../models/UserSession");
 
 module.exports = app => {
-  app.post("/api/account/login", (req, res, next) => {
+  app.post("/api/auth/login", (req, res, next) => {
     let { body } = req;
     let { username, password } = body;
 

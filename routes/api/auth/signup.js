@@ -3,7 +3,7 @@ const _ = require("lodash");
 const User = require("../../../models/User");
 
 module.exports = app => {
-  app.post("/api/account/signup", (req, res, next) => {
+  app.post("/api/auth/signup", (req, res, next) => {
     let { body } = req;
     let { username, firstName, lastName, email, password } = body;
 

@@ -1,7 +1,7 @@
 const UserSession = require("../../../models/UserSession");
 
 module.exports = app => {
-  app.get("/api/account/logout", (req, res, next) => {
+  app.get("/api/auth/logout", (req, res, next) => {
     const { query } = req;
     const { token } = query;
 
