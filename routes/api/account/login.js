@@ -66,7 +66,7 @@ module.exports = app => {
               return res.send({
                 success: true,
                 message: "Valid log in",
-                token: doc._id
+                token: doc._id,
               });
             }
           });

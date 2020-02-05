@@ -13,20 +13,20 @@ module.exports = app => {
       (err, sessions) => {
           if(err){
             return res.send({
-                succes: false,
+                success: false,
                 message: "Error: Server error.",
                 error: err
               });
             }
           if(!sessions){
             return res.send({
-                succes: false,
+                success: false,
                 message: "Error: Invalid token / session",
             })
           }
           else if(sessions.length==1){
             return res.send({
-                succes: true,
+                success: true,
                 message: "Valid token / session",
             })
           }

@@ -12,14 +12,14 @@ module.exports = app => {
     if (!username) {
       return res.send({
         success: false,
-        message: "Error: Nickname cannot be blank."
+        message: "Error: Username cannot be blank."
       });
     }
 
     if (_.includes(username, " ")) {
       return res.send({
         success: false,
-        message: "Error: Nickname cannot contain whitespace."
+        message: "Error: Username cannot contain whitespace."
       });
     }
 

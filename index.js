@@ -17,10 +17,10 @@ app.get("/", (req, res) => {
   res.send("hi");
 });
 
-require("./routes/api/account/signup")(app);
-require("./routes/api/account/login")(app);
-require("./routes/api/account/verify")(app);
-require("./routes/api/account/logout")(app);
+require("./routes/api/auth/signup")(app);
+require("./routes/api/auth/login")(app);
+require("./routes/api/auth/verify")(app);
+require("./routes/api/auth/logout")(app);
 
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
