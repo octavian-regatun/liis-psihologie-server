@@ -5,16 +5,11 @@ module.exports = app => {
     const { query } = req;
     const { token } = query;
 
-    UserSession.findOneAndUpdate(
+    UserSession.findOneAndDelete(
       {
-        _id: token,
-        isDeleted: false
+        _id: token
       },
-      {
-        $set: { isDeleted: true }
-      },
-      null,
-      (err, sessions) => {
+      err => {
         if (err) {
           return res.send({
             success: false,
@@ -24,7 +19,7 @@ module.exports = app => {
         } else {
           return res.send({
             success: true,
-            message: "Logged out (session isDeleted=true)"
+            message: "Logged out"
           });
         }
       }
