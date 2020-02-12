@@ -5,13 +5,13 @@ const UserSessionSchema = new mongoose.Schema({
     type: String,
     default: "-1"
   },
+  token: {
+    type: String,
+    default: "-1"
+  },
   timestamp: {
     type: Date,
     default: Date.now()
-  },
-  isDeleted: {
-    type: Boolean,
-    default: false
   }
 });
 

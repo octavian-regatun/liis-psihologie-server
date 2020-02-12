@@ -3,11 +3,11 @@ const UserSession = require("../../../models/UserSession");
 module.exports = app => {
   app.get("/api/auth/logout", (req, res, next) => {
     const { query } = req;
-    const { token } = query;
+    const tokenQuery = query.token;
 
     UserSession.findOneAndDelete(
       {
-        _id: token
+        token: tokenQuery
       },
       err => {
         if (err) {
@@ -19,7 +19,7 @@ module.exports = app => {
         } else {
           return res.send({
             success: true,
-            message: "Logged out"
+            message: "Logged out."
           });
         }
       }

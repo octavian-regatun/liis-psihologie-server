@@ -3,33 +3,34 @@ const UserSession = require("../../../models/UserSession");
 module.exports = app => {
   app.get("/api/auth/verify", (req, res, next) => {
     const { query } = req;
-    const { token } = query;
+    const tokenQuery =query.token;
 
     UserSession.find(
       {
-        _id: token,
-        isDeleted: false
+        token: tokenQuery
       },
       (err, sessions) => {
-          if(err){
+        if (err) {
+          return res.send({
+            success: false,
+            message: "Error: Server error.",
+            error: err
+          });
+        } 
+        else{
+          if(sessions.length==0){
             return res.send({
-                success: false,
-                message: "Error: Server error.",
-                error: err
-              });
-            }
-          if(!sessions){
-            return res.send({
-                success: false,
-                message: "Error: Invalid token / session",
-            })
+              success: false,
+              message: "Invalid token / session cannot be found.",
+            });
           }
-          else if(sessions.length==1){
+          else if (sessions.length==1){
             return res.send({
-                success: true,
-                message: "Valid token / session",
-            })
+              success: true,
+              message: "Valid token.",
+            });
           }
+        }
       }
     );
   });

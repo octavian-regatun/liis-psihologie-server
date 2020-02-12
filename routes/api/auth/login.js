@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const cryptoRandomString = require("crypto-random-string");
 
 const User = require("../../../models/User");
 const UserSession = require("../../../models/UserSession");
@@ -54,7 +55,12 @@ module.exports = app => {
         // if password is correct / when you log in
         if (foundUser.validPassword(password)) {
           let userSession = new UserSession();
+          const randomToken = cryptoRandomString({
+            length: 20,
+            type: "url-safe"
+          });
           userSession.userId = foundUser._id;
+          userSession.token = randomToken;
           userSession.save((err, doc) => {
             if (err) {
               return res.send({
@@ -66,7 +72,7 @@ module.exports = app => {
               return res.send({
                 success: true,
                 message: "Valid log in",
-                token: doc._id,
+                token: userSession.token
               });
             }
           });

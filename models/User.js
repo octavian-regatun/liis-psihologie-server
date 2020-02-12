@@ -22,14 +22,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
-  isDeleted: {
-    type: Boolean,
-    default: false
-  },
-  country: {
-    type: String,
-    default: ""
-  },
   signUpDate: {
     type: Date,
     default: Date.now()
@@ -37,6 +29,10 @@ const UserSchema = new mongoose.Schema({
   lastLogInDate: {
     type: Date,
     default: Date.now()
+  },
+  role:{
+    type: String,
+    default: "elev"
   }
 });
 
